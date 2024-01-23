@@ -12,12 +12,12 @@ public class HelloApplication extends Application {
     public void start(Stage stage) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            Scene scene = new Scene(fxmlLoader.load(), 1020, 740);
 
             HelloController controller = fxmlLoader.getController();
             controller.setMainApplication(this);
 
-            stage.setTitle("Hello!");
+            stage.setTitle("Currency Converter v1.01");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

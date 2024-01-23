@@ -1,0 +1,19 @@
+/* light-theme.css */
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-text-fill: #333333;
+}
+
+.label {
+    -fx-text-fill: #333333;
+}
+
+.button {
+    -fx-background-color: #6495ED;
+    -fx-text-fill: #ffffff;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #333333;
+}

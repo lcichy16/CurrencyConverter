@@ -8,6 +8,9 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpHeaders;
 import java.io.IOException;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 public class ApiRequest {
 
     public static String sendRequest() throws URISyntaxException {
@@ -20,9 +23,19 @@ public class ApiRequest {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                HttpHeaders headers = response.headers();
-                headers.map().forEach((k, v) -> System.out.println(k + ":" + v));
-                return response.body();
+                JsonParser parser = new JsonParser();
+                JsonObject jsonResponse = parser.parse(response.body()).getAsJsonObject();
+
+                if (jsonResponse.has("rates") && jsonResponse.getAsJsonArray("rates").size() > 0) {
+                    JsonObject ratesObject = jsonResponse.getAsJsonArray("rates").get(0).getAsJsonObject();
+                    if (ratesObject.has("mid")) {
+                        String exchangeRate = ratesObject.getAsJsonPrimitive("mid").getAsString();
+                        return exchangeRate;
+                    }
+                }
+
+                System.out.println("Błąd: Brak klucza 'mid' w odpowiedzi JSON");
+                return "Błąd: Brak klucza 'mid' w odpowiedzi JSON";
             } else {
                 System.out.println("Błąd: " + response.statusCode() + " - " + response.body());
                 return "Błąd: " + response.statusCode() + " - " + response.body();

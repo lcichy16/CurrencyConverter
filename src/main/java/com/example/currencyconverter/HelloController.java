@@ -1,23 +1,37 @@
 package com.example.currencyconverter;
 
-import com.example.currencyconverter.ApiRequest;
-import com.example.currencyconverter.HelloApplication;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class HelloController {
-    private HelloApplication mainApplication;
+    @FXML
+    private Label resultLabel;
 
-    public void setMainApplication(HelloApplication mainApplication) {
-        this.mainApplication = mainApplication;
+    @FXML
+    private AnchorPane mainPane;
+
+    private boolean isDarkTheme = false;
+
+    @FXML
+    protected void onConvertButtonClick() {
+        try {
+            String exchangeRate = ApiRequest.sendRequest();
+            resultLabel.setText("Exchange Rate: " + exchangeRate);
+        } catch (Exception e) {
+            resultLabel.setText("Error: " + e.getMessage());
+        }
     }
 
     @FXML
-    protected void onHelloButtonClick() {
-        try {
-            String apiResponse = ApiRequest.sendRequest();
-            System.out.println("Odpowiedź z API: " + apiResponse);
-        } catch (Exception e) {
-            System.err.println("Błąd podczas wykonywania zapytania API: " + e.getMessage());
-        }
+    protected void toggleTheme() {
+        isDarkTheme = !isDarkTheme;
+        updateTheme();
+    }
+
+    private void updateTheme() {
+        String themeStylesheet = isDarkTheme ? "dark-theme.css" : "light-theme.css";
+        mainPane.getStylesheets().clear();
+        mainPane.getStylesheets().add(getClass().getResource(themeStylesheet).toExternalForm());
     }
 }

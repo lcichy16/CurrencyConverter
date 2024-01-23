@@ -1,0 +1,11 @@
+.root {
+    -fx-background-color: #F0F0F0; /* Jasnoszary kolor tła */
+    -fx-text-fill: black; /* Kolor tekstu */
+}
+
+.button {
+    -fx-background-color: #CCCCCC; /* Jasnoszary kolor przycisków */
+    -fx-text-fill: black; /* Kolor tekstu na przyciskach */
+}
+
+/* Dodatkowe style w razie potrzeby */
