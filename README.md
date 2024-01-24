@@ -21,7 +21,7 @@ A simple application for currency conversion. The application uses the public AP
 1 Clone the repository:
 
     ``bash
-    git clone https://github.com/twoje-konto/currency-converter.git
+    https://github.com/lcichy16/CurrencyConverter.git
     ```
 
 2. launch the project in IntelliJ IDEA or other environment.
