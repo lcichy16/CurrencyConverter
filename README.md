@@ -35,4 +35,3 @@ A simple application for currency conversion. The application uses the public AP
 
 Looking forward to your suggestions ! Work still in progress, early stage of the application.
 
-Translated with DeepL.com (free version)
