@@ -1,4 +1,4 @@
-# Currency Converter v1.01
+# Currency Converter v1.02
 
 
 A simple application for currency conversion. The application uses the public API of the NBP (National Bank of Poland) to retrieve current exchange rates.
